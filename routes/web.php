@@ -15,21 +15,21 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/keuangan', [KeuanganController::class, 'index'])->name('index');
+Route::get('/keuangan', [KeuanganController::class, 'index'])->name('keuangan.index');
 Route::get('/show/{id}', [KeuanganController::class, 'show']);
-Route::get('/create', [KeuanganController::class, 'create'])->name('create');
-Route::post('/create', [KeuanganController::class, 'store'])->name('store');
+Route::get('/keuangan/create', [KeuanganController::class, 'create'])->name('create');
+Route::post('/keuangan/create', [KeuanganController::class, 'store'])->name('store');
 Route::get('/edit/{keuangan}', [KeuanganController::class, 'edit'])->name('edit');
 Route::patch('/update/{keuangan}', [KeuanganController::class, 'update'])->name('update');
-//Route::delete('/delete/{keuangan}', [KeuanganController::class, 'delete'])->name('delete');
+Route::delete('/delete/{keuangan}', [KeuanganController::class, 'delete'])->name('keuangan.delete');
 
 Route::get('/item', [ItemController::class, 'index'])->name('indexitem');
 Route::get('/show/{id}', [ItemController::class, 'showitem']);
 Route::get('/create', [ItemController::class, 'createitem'])->name('createitem');
 Route::post('/create', [ItemController::class, 'storeitem'])->name('storeitem');
-Route::get('/edit,/{keuangan}', [ItemController::class, 'edititem'])->name('edititem');
-Route::patch('/update/{keuangan}', [ItemController::class, 'updateitem'])->name('updateitem');
-Route::delete('/delete/{keuangan}', [ItemController::class, 'deleteitem'])->name('deleteitem');
+Route::get('/edit,/{item}', [ItemController::class, 'edititem'])->name('edititem');
+Route::patch('/update/{item}', [ItemController::class, 'updateitem'])->name('updateitem');
+Route::delete('/delete/{item}', [ItemController::class, 'deleteitem'])->name('item.delete');
 
 Auth::routes();
 

@@ -44,7 +44,7 @@ class KeuanganController extends Controller
             'id_item' => $request->id_item
         ]);
 
-        return Redirect::route('index');
+        return Redirect::route('keuangan.index');
     }
 
     public function edit(Keuangan $keuangan)

@@ -1,25 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YNS CENTER</title>
-</head>
-<body>
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach    
-    @endif
+@extends('layouts.app')
 
-    <form action="{{ route('store') }}" method="post">
-        @csrf
-        <input type="text" name="keterangan" placeholder="keterangan">
-        <input type="number" name="nominal" placeholder="nominal">
-        <input type="date" name="tanggal" placeholder="tanggal">
-        <input type="text" name="posisi" placeholder="posisi">
-        <input type="number" name="id_item" placeholder="id_item">
-        <button type="submit">Add</button>
-    </form>
-</body>
-</html>
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Tambah Catatan Keuangan
+                    </div>
+                    <div class="card-body">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach    
+                        @endif
+
+                        <form action="{{ route('store') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label>Keterangan</label>
+                                <input type="text" name="keterangan" class="form-control" placeholder="keterangan">
+                            </div>
+                            <div class="form-group">
+                                <label>Nominal</label>
+                                <input type="number" name="nominal" class="form-control" placeholder="nominal">
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal</label>
+                                <input type="date" name="tanggal" class="form-control" placeholder="tanggal">
+                            </div>
+                            <div class="form-group">
+                                <label>Posisi</label>
+                                <input type="text" name="posisi" class="form-control" placeholder="posisi">
+                            </div>
+                            <div class="form-group">
+                                <label>Item</label>
+                                <input type="number" name="id_item" class="form-control" placeholder="id_item">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
