@@ -23,13 +23,17 @@ Route::get('/edit/{keuangan}', [KeuanganController::class, 'edit'])->name('edit'
 Route::patch('/update/{keuangan}', [KeuanganController::class, 'update'])->name('update');
 //Route::delete('/delete/{keuangan}', [KeuanganController::class, 'delete'])->name('delete');
 
-Route::get('/item', [ItemController::class, 'indexitem'])->name('indexitem');
+Route::get('/item', [ItemController::class, 'index'])->name('indexitem');
 Route::get('/show/{id}', [ItemController::class, 'showitem']);
 Route::get('/create', [ItemController::class, 'createitem'])->name('createitem');
 Route::post('/create', [ItemController::class, 'storeitem'])->name('storeitem');
 Route::get('/edit,/{keuangan}', [ItemController::class, 'edititem'])->name('edititem');
 Route::patch('/update/{keuangan}', [ItemController::class, 'updateitem'])->name('updateitem');
 Route::delete('/delete/{keuangan}', [ItemController::class, 'deleteitem'])->name('deleteitem');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
