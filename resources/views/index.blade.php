@@ -25,7 +25,7 @@
                                 <th>Posisi</th>
                                 <th>Nama</th>
                                 <th>Nominal</th>
-                                <th>Actions</th>
+                                <th width="20%">Actions</th>
                             </tr>
                             @foreach ($keuangans as $keuangan)
                             <tr>
@@ -43,7 +43,7 @@
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                    </form
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
