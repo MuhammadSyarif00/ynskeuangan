@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Item'), 'pageSlug' => 'item'])
+@extends('layouts.app', ['page' => __('Tambah Item'), 'pageSlug' => 'item'])
 
 @section('content')
 
@@ -6,7 +6,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title"> Daftar Item</h4>
+        <h4 class="card-title"> Form Item</h4>
       </div>
       <div class="card-tools">
         

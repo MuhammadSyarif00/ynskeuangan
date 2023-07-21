@@ -11,19 +11,14 @@ class KeuanganController extends Controller
 {
     public function index()
     {
-        $keuangans = Keuangan::paginate(2);
-        return view('index', ['keuangans' => $keuangans]);
-    }
-
-    public function show($id)
-    {
-        $keuangan = Keuangan::find($id);
-        return view('show', ['keuangan' => $keuangan]);
+        $keuangans = Keuangan::all()->sortByDesc("tanggal");
+        return view('index',['keuangans' => $keuangans]);
     }
 
     public function create()
     {
-        return view('create');
+        $items = Item::all();
+        return view('create', ['items' => $items]);
     }
 
     public function store(Request $request)
@@ -47,7 +42,8 @@ class KeuanganController extends Controller
 
     public function edit(Keuangan $keuangan)
     {
-        return view('edit', compact('keuangan'));
+        $items = Item::all();
+        return view('edit', ['keuangan' => $keuangan, 'items' => $items]);
     }
 
     public function update(Request $request, Keuangan $keuangan)
@@ -59,13 +55,13 @@ class KeuanganController extends Controller
             'id_item' => $request->id_item
         ]);
 
-        return Redirect::route('index');
+        return Redirect::route('keuangan.index');
     }
 
     public function delete(Keuangan $keuangan)
     {
         $keuangan->delete();
 
-        return Redirect::route('index');
+        return Redirect::route('keuangan.index');
     }
 }

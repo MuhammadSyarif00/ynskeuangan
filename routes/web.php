@@ -15,21 +15,14 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/keuangan', [KeuanganController::class, 'index'])->name('keuangan.index');
 Route::get('/show/{id}', [KeuanganController::class, 'show']);
-Route::get('/keuangan/create', [KeuanganController::class, 'create'])->name('create');
-Route::post('/keuangan/create', [KeuanganController::class, 'store'])->name('store');
 Route::get('/edit/{keuangan}', [KeuanganController::class, 'edit'])->name('edit');
 Route::patch('/update/{keuangan}', [KeuanganController::class, 'update'])->name('update');
 Route::delete('/delete/{keuangan}', [KeuanganController::class, 'delete'])->name('keuangan.delete');
 
 Route::get('/item', [ItemController::class, 'index'])->name('indexitem');
 Route::get('/show/{id}', [ItemController::class, 'showitem']);
-// Route::get('/create', [ItemController::class, 'createitem'])->name('createitem');
-// Route::post('/create', [ItemController::class, 'storeitem'])->name('storeitem');
-// Route::get('/edit,/{item}', [ItemController::class, 'edititem'])->name('edititem');
 Route::patch('/update/{item}', [ItemController::class, 'updateitem'])->name('updateitem');
-// Route::delete('/delete/{item}', [ItemController::class, 'deleteitem'])->name('item.delete');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -44,6 +37,14 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('item/edit/{item}', ['as' => 'item.edit', 'uses' => 'App\Http\Controllers\ItemController@edit']);
 		Route::patch('item/update/{item}', ['as' => 'item.update', 'uses' => 'App\Http\Controllers\ItemController@update']);
 		Route::delete('item/delete/{item}', ['as' => 'item.delete', 'uses' => 'App\Http\Controllers\ItemController@delete']);
+
+		Route::get('keuangan', ['as' => 'keuangan.index', 'uses' => 'App\Http\Controllers\KeuanganController@index']);
+		Route::get('keuangan/create', ['as' => 'keuangan.create', 'uses' => 'App\Http\Controllers\KeuanganController@create']);
+		Route::post('keuangan/create', ['as' => 'keuangan.store', 'uses' => 'App\Http\Controllers\keuanganController@store']);
+		Route::get('keuangan/edit/{keuangan}', ['as' => 'keuangan.edit', 'uses' => 'App\Http\Controllers\KeuanganController@edit']);
+		Route::patch('keuangan/update/{keuangan}', ['as' => 'keuangan.update', 'uses' => 'App\Http\Controllers\KeuanganController@update']);
+		Route::delete('keuangan/delete/{keuangan}', ['as' => 'keuangan.delete', 'uses' => 'App\Http\Controllers\KeuanganController@delete']);
+
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
 		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);

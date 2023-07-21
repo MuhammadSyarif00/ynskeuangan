@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li @if ($pageSlug == 'keuangan') class="active " @endif>
-                <a href="{{ route('pages.icons') }}">
+                <a href="{{ route('keuangan.index') }}">
                     <i class="tim-icons icon-money-coins"></i>
                     <p>{{ __('Pencatatan') }}</p>
                 </a>

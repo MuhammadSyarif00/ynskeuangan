@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->double('nominal');
             $table->text('keterangan');
-            $table->foreignId('id_item')->constrained('items');
+            $table->foreignId('item_id')->constrained('items');
             $table->timestamps();
         });
     }

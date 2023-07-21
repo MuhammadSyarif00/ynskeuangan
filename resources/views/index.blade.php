@@ -1,66 +1,62 @@
-@extends('layouts.app')
+
+@extends('layouts.app', ['page' => __('Pencatatan'), 'pageSlug' => 'keuangan'])
 
 @section('content')
-    @if (Auth::check())
-        <form action="{{ route('logout') }}" method="post">
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> Pencatatan Keuangan</h4>
+      </div>
+      <div class="card-tools">
+        <form action="{{ route('keuangan.create') }}" method="get">
             @csrf
-            <button type="submit">Logout</button>
+            <button type="submit" class="btn btn-info">{{ __('Tambah') }}</button>
         </form>
-    @else
-        <a href="{{ route('login') }}">Login</a>
-        <a href="{{ route('register') }}">Register</a>
-    @endif
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="col-md-8">
-                            Daftar Catatan Keuangan
-                        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>Tanggal</th>
+                <th>Nominal</th>
+                <th>Keterangan</th>
+                <th>Item</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach ($keuangans as $keuangan)
+            <tr>
+                <td>{{ date('d-m-Y', strtotime($keuangan->tanggal)) }}</td>
+                <td class="text-right">{{ number_format($keuangan->nominal,0,',','.') }}</td>
+                <td>{{ $keuangan->keterangan }}</td>
+                <td>{{ $keuangan->item->nama }}</td>
+                <td class="text-center">
+                    <div class="row">
+                        <form action="{{ route('keuangan.edit', $keuangan) }}" method="get">
+                            @csrf
+                            <button type="submit" rel="tooltip" title="" class="btn btn-warning" data-original-title="Ubah Item">
+                                <i class="tim-icons icon-pencil"></i> Ubah
+                            </button>
+                        </form>
+                        <form action="{{ route('keuangan.delete', $keuangan) }}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" rel="tooltip" title="" class="btn btn-danger" data-original-title="Hapus Item">
+                                <i class="tim-icons icon-trash-simple"></i> Hapus
+                            </button>
+                        </form>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-responsive table-hover">
-                            <tr>
-                                <th>ID</th>
-                                <th>Tanggal</th>
-                                <th>Posisi</th>
-                                <th>Nama</th>
-                                <th>Nominal</th>
-                                <th width="20%">Actions</th>
-                            </tr>
-                            @foreach ($keuangans as $keuangan)
-                            <tr>
-                                <td>{{ $keuangan->id }}</td>
-                                <td>{{ date('d-m-Y', strtotime($keuangan->tanggal)) }}</td>
-                                <td>{{ $keuangan->posisi }}</td>
-                                <td>{{ $keuangan->keterangan }}</td>
-                                <td>{{ $keuangan->nominal }}</td>
-                                <td>
-                                    <form action="{{ route('edit', $keuangan) }}" method="get">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-warning">Edit</button>
-                                    </form>
-                                    <form action="{{ route('keuangan.delete', $keuangan) }}" method="post">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-            </div>
+                </td>
+            </tr>
+            @endforeach
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
-    
-
-    Current page: {{ $keuangans->currentPage() }} <br>
-    Total page: {{ $keuangans->total() }} <br>
-    Data per page: {{ $keuangans->perPage() }} <br>
-
-    {{ $keuangans->links('pagination::bootstrap-4') }}
-
+  </div>
+</div>
 @endsection

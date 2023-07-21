@@ -11,7 +11,7 @@
       <div class="card-tools">
         <form action="{{ route('item.create') }}" method="get">
             @csrf
-            <button type="submit" class="btn btn-fill btn-primary">{{ __('Tambah') }}</button>
+            <button type="submit" class="btn btn-info">{{ __('Tambah') }}</button>
         </form>
       </div>
       <div class="card-body">
@@ -35,14 +35,14 @@
                     <div class="row">
                         <form action="{{ route('item.edit', $item) }}" method="get">
                             @csrf
-                            <button type="submit" rel="tooltip" title="" class="btn" data-original-title="Ubah Item">
+                            <button type="submit" rel="tooltip" title="" class="btn btn-warning" data-original-title="Ubah Item">
                                 <i class="tim-icons icon-pencil"></i> Ubah
                             </button>
                         </form>
                         <form action="{{ route('item.delete', $item) }}" method="post">
                             @method('delete')
                             @csrf
-                            <button type="submit" rel="tooltip" title="" class="btn" data-original-title="Hapus Item">
+                            <button type="submit" rel="tooltip" title="" class="btn btn-danger" data-original-title="Hapus Item">
                                 <i class="tim-icons icon-trash-simple"></i> Hapus
                             </button>
                         </form>
