@@ -53,6 +53,12 @@
                     <p>{{ __('Pencatatan') }}</p>
                 </a>
             </li>
+            <li @if ($pageSlug == 'keuangan') class="active " @endif>
+                <a href="{{ route('keuangan.index') }}">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>{{ __('Laporan') }}</p>
+                </a>
+            </li>
             <li @if ($pageSlug == 'maps') class="active " @endif>
                 <a href="{{ route('pages.maps') }}">
                     <i class="tim-icons icon-pin"></i>
