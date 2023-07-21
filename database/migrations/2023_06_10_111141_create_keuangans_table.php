@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('keuangans', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal');
-            $table->char('posisi');
             $table->double('nominal');
             $table->text('keterangan');
             $table->foreignId('id_item')->constrained('items');

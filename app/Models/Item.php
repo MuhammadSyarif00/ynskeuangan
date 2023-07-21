@@ -9,6 +9,11 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nama',
+        'kategori',
+    ];
+
     public function keuangan()
     {
         return $this->hasMany(Keuangan::class);

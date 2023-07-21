@@ -15,7 +15,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Daftar Catatan Keuangan
+                        <div class="col-md-8">
+                            Daftar Catatan Keuangan
+                        </div>
                     </div>
                     <div class="card-body">
                         <table class="table table-responsive table-hover">

@@ -32,7 +32,6 @@ class KeuanganController extends Controller
             'keterangan' => 'required',
             'nominal' => 'required',
             'tanggal' => 'required',
-            'posisi' => 'required',
             'id_item' => 'required'
         ]);
 
@@ -40,7 +39,6 @@ class KeuanganController extends Controller
             'keterangan' => $request->keterangan,
             'nominal' => $request->nominal,
             'tanggal' => $request->tanggal,
-            'posisi' => $request->posisi,
             'id_item' => $request->id_item
         ]);
 
@@ -58,7 +56,6 @@ class KeuanganController extends Controller
             'keterangan' => $request->keterangan,
             'nominal' => $request->nominal,
             'tanggal' => $request->tanggal,
-            'posisi' => $request->posisi,
             'id_item' => $request->id_item
         ]);
 

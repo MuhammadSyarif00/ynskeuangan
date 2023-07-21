@@ -30,10 +30,6 @@
                                 <input type="date" name="tanggal" class="form-control" placeholder="tanggal">
                             </div>
                             <div class="form-group">
-                                <label>Posisi</label>
-                                <input type="text" name="posisi" class="form-control" placeholder="posisi">
-                            </div>
-                            <div class="form-group">
                                 <label>Item</label>
                                 <input type="number" name="id_item" class="form-control" placeholder="id_item">
                             </div>

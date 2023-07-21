@@ -11,8 +11,8 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Keuangan::paginate(2);
-        return view('indexitem', ['items' => $items]);
+        $items = Item::all();
+        return view('indexitem',['items' => $items]);
     }
 
     public function show($id)
@@ -38,7 +38,7 @@ class ItemController extends Controller
             'kategori' => $request->kategori
         ]);
 
-        return Redirect::route('indexitem');
+        return Redirect::route('item.index');
     }
 
     public function edit(Item $item)
@@ -53,13 +53,13 @@ class ItemController extends Controller
             'kategori' => $request->kategori
         ]);
 
-        return Redirect::route('indexitem');
+        return Redirect::route('item.index');
     }
 
     public function delete(Item $item)
     {
         $item->delete();
 
-        return Redirect::route('indexitem');
+        return Redirect::route('item.index');
     }
 }
