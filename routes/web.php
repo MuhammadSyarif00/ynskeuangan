@@ -31,6 +31,8 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
+		Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 		Route::get('item', ['as' => 'item.index', 'uses' => 'App\Http\Controllers\ItemController@index']);
 		Route::get('item/create', ['as' => 'item.create', 'uses' => 'App\Http\Controllers\ItemController@create']);
 		Route::post('item/create', ['as' => 'item.store', 'uses' => 'App\Http\Controllers\ItemController@store']);
@@ -45,11 +47,10 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::patch('keuangan/update/{keuangan}', ['as' => 'keuangan.update', 'uses' => 'App\Http\Controllers\KeuanganController@update']);
 		Route::delete('keuangan/delete/{keuangan}', ['as' => 'keuangan.delete', 'uses' => 'App\Http\Controllers\KeuanganController@delete']);
 
+		Route::get('laporan', ['as' => 'laporan.index', 'uses' => 'App\Http\Controllers\LaporanController@index']);
+
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
-		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
 		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
-		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
-		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

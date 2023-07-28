@@ -15,25 +15,6 @@ class PageController extends Controller
     }
 
     /**
-     * Display maps page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function maps()
-    {
-        return view('pages.maps');
-    }
-
-    /**
-     * Display tables page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function tables()
-    {
-        return view('pages.tables');
-    }
-    /**
      * Display tables page
      *
      * @return \Illuminate\View\View
@@ -53,14 +34,5 @@ class PageController extends Controller
         return view('pages.notifications');
     }
 
-    /**
-     * Display typography page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function typography()
-    {
-        return view('pages.typography');
-    }
 
 }
